@@ -31,8 +31,8 @@ function ProcessAddClass(encryptedPara) {
         },
         failure: function (response) {
             var r = $.parseJSON(response.responseText);
-            console.log("Fail");            
-            kq = "failed";  
+            console.log("Fail");
+            kq = "failed";
             GetMessageAddClass(kq);
         },
         complete: function (response) {
@@ -46,15 +46,13 @@ function ProcessAddClass(encryptedPara) {
 }
 
 function Add_Click(mess,year,semester,studentIdNumber,curriculumId, key,iv) {
-//alert(curriculumId);
-var t = curriculumId.indexOf(',');
-if (t >= 0) curriculumId = curriculumId.substring(0, t);
-//alert(curriculumId);
-var classRegCode = document.getElementById("ctl00_PlaceHolderContentArea_ctl00_ctl01_txt_ClassID").value;
+    var t = curriculumId.indexOf(',');
+    if (t >= 0) curriculumId = curriculumId.substring(0, t);
+    var classRegCode = document.getElementById("ctl00_PlaceHolderContentArea_ctl00_ctl01_txt_ClassID").value;
 
-var para = classRegCode + "," + year + "," + semester + "," + studentIdNumber + "," + curriculumId;           
-var encrypted = EncryptString(para, key, iv);
-ProcessAddClass(encrypted);
+    var para = classRegCode + "," + year + "," + semester + "," + studentIdNumber + "," + curriculumId;
+    var encrypted = EncryptString(para, key, iv);
+    ProcessAddClass(encrypted);
 }
 
 function f() {
